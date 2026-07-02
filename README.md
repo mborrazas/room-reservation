@@ -116,15 +116,9 @@ npm test
 
 ## AI tooling (challenge disclosure)
 
-Usé **Cursor** como IDE y **Cursor Agent (Auto)** como asistente de pair programming. No usé MCPs externos (Datadog, Linear, Slack, etc.) — solo las herramientas integradas del agente.
+Usé **Cursor** como IDE y **Cursor Agent (Auto)** como asistente de pair programming.
 
 ### Skills / MCPs
 
 - **MCPs:** ninguno
 - **Cursor Skills:** ninguno instalado fue invocado de forma explícita durante el desarrollo
-
-### Qué no delegué al agente
-
-- Decisiones de producto (sin auth, sin horario laboral, hard delete)
-- Estructura final `backend` / `frontend` / `shared`
-- Revisión de que los tests pasen antes de dar por cerrado un cambio
