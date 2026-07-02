@@ -113,31 +113,10 @@ npm test
 - Filtros en la UI (por sala, fecha, organizador)
 - Cancelar reservas en lugar de borrarlas
 - CI con GitHub Actions (`test` + `build` en cada push)
-- Deploy en Vercel con instrucciones en el README
 
 ## AI tooling (challenge disclosure)
 
-**Tiempo estimado:** ~4 horas de desarrollo.
-
 Usé **Cursor** como IDE y **Cursor Agent (Auto)** como asistente de pair programming. No usé MCPs externos (Datadog, Linear, Slack, etc.) — solo las herramientas integradas del agente.
-
-### Cómo lo usé
-
-| Fase | Qué hice yo | Qué hizo el agente |
-|------|-------------|---------------------|
-| Arquitectura | Definí capas (`backend` / `frontend` / `shared`) y requisitos | Propuso estructura de carpetas, separación DTO vs dominio |
-| Backend | Revisé reglas de negocio y validaciones | Generó dominio, repositorios, servicios, handlers HTTP y tests |
-| API | Pedí REST estándar con `/bookings/:id` | Refactorizó rutas, mappers y cliente frontend |
-| UI | Elegí shadcn/ui y el flujo CRUD | Scaffolding de componentes, formularios, tabla, diálogos, Tailwind |
-| Refactors | Pedí renombrar `api` → `backend`, unificar `booking-sort`, quitar reglas de horario | Bulk edits de imports, movimiento de archivos, verificación de build |
-| Docs | Indiqué qué incluir en el README | Primer borrador del README, lo fui ajustando |
-
-### Herramientas del agente que se usaron
-
-- **Lectura y búsqueda en el repo** — para entender estructura antes de tocar código
-- **Edición de archivos** — generación y refactors incrementales
-- **Terminal integrada** — `npm test`, `npm run build`, `npm run dev`
-- **Subagente `explore`** — exploración inicial del árbol de `src/` y dependencias
 
 ### Skills / MCPs
 
@@ -149,6 +128,3 @@ Usé **Cursor** como IDE y **Cursor Agent (Auto)** como asistente de pair progra
 - Decisiones de producto (sin auth, sin horario laboral, hard delete)
 - Estructura final `backend` / `frontend` / `shared`
 - Revisión de que los tests pasen antes de dar por cerrado un cambio
-- Tono y contenido del README (lo fui corrigiendo para que suene a mío)
-
-El código lo fui revisando en cada iteración; no es un dump automático sin supervisión.
