@@ -17,7 +17,7 @@ interface BookingsEmptyStateProps {
 export function BookingsEmptyState({ rooms }: BookingsEmptyStateProps) {
   return (
     <Card className="overflow-hidden border-dashed border-primary/20 bg-card/80 shadow-lg shadow-primary/5 backdrop-blur-sm">
-      <CardHeader className="items-center border-b border-border/60 bg-gradient-to-b from-primary/5 to-transparent pb-10 text-center">
+      <CardHeader className="flex flex-col items-center border-b border-border/60 bg-gradient-to-b from-primary/5 to-transparent pb-10 text-center">
         <div className="relative mb-5">
           <div className="flex size-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary ring-1 ring-primary/10">
             <CalendarOff className="size-9" aria-hidden="true" />
@@ -27,10 +27,10 @@ export function BookingsEmptyState({ rooms }: BookingsEmptyStateProps) {
             aria-hidden="true"
           />
         </div>
-        <CardTitle className="text-2xl font-semibold tracking-tight">
+        <CardTitle className="text-center text-2xl font-semibold tracking-tight">
           No hay reservas programadas
         </CardTitle>
-        <CardDescription className="max-w-lg text-base leading-relaxed">
+        <CardDescription className="mx-auto max-w-lg text-center text-base leading-relaxed">
           Empezá reservando una sala para tu próxima reunión. Acá verás todas las
           reservas ordenadas por hora.
         </CardDescription>

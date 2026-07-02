@@ -57,22 +57,32 @@ export function BookingFormFields({
   onFieldBlur,
 }: BookingFormFieldsProps) {
   const fieldId = (name: string) => `${idPrefix}${name}`;
+  const roomItems = rooms.map((room) => ({
+    value: room.id,
+    label: `${room.name} · ${room.capacity} personas`,
+  }));
+  const selectedRoom = rooms.find((room) => room.id === form.roomId);
 
   return (
     <div className="grid gap-4 sm:grid-cols-2">
       <div className="space-y-2 sm:col-span-2">
         <Label htmlFor={fieldId("roomId")}>Sala</Label>
         <Select
-          value={form.roomId}
+          value={form.roomId || null}
           onValueChange={(value) => onFieldChange("roomId", value ?? "")}
           disabled={disabled}
+          items={roomItems}
         >
           <SelectTrigger
             id={fieldId("roomId")}
             className={cn("w-full", fieldErrors.roomId && "border-destructive")}
             aria-invalid={Boolean(fieldErrors.roomId)}
           >
-            <SelectValue placeholder="Seleccioná una sala" />
+            <SelectValue placeholder="Seleccioná una sala">
+              {selectedRoom
+                ? `${selectedRoom.name} · ${selectedRoom.capacity} personas`
+                : null}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             {rooms.map((room) => (
