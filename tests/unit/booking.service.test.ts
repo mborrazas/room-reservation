@@ -62,13 +62,43 @@ describe("hasBookingConflict", () => {
     expect(conflict).toBe(true);
   });
 
-  it("no detecta conflicto en horarios adyacentes", () => {
+  it("detecta conflicto en horarios adyacentes (sin margen de 15 min)", () => {
     const existing = [createBooking()];
 
     const conflict = hasBookingConflict(
       {
         roomId: ROOM_ID,
         startAt: new Date("2026-07-02T11:00:00"),
+        endAt: new Date("2026-07-02T12:00:00"),
+      },
+      existing,
+    );
+
+    expect(conflict).toBe(true);
+  });
+
+  it("detecta conflicto si el hueco es menor a 15 minutos", () => {
+    const existing = [createBooking()];
+
+    const conflict = hasBookingConflict(
+      {
+        roomId: ROOM_ID,
+        startAt: new Date("2026-07-02T11:14:00"),
+        endAt: new Date("2026-07-02T12:00:00"),
+      },
+      existing,
+    );
+
+    expect(conflict).toBe(true);
+  });
+
+  it("no detecta conflicto con 15 minutos o más de separación", () => {
+    const existing = [createBooking()];
+
+    const conflict = hasBookingConflict(
+      {
+        roomId: ROOM_ID,
+        startAt: new Date("2026-07-02T11:15:00"),
         endAt: new Date("2026-07-02T12:00:00"),
       },
       existing,
