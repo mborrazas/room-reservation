@@ -41,6 +41,7 @@ export class BookingService {
       endAt: input.endAt,
     });
 
+    
     return this.bookingRepository.create(input);
   }
 

@@ -26,6 +26,26 @@ export function hasBookingConflict(
       return false;
     }
 
+ 
+
+    const diferenciaMs = Math.abs(booking.startAt.getTime() - candidate.startAt.getTime());
+
+    const diffStartAt = diferenciaMs / 60000;
+
+    if(diffStartAt > 15){
+      return false;
+    }
+
+
+    const diffMs = Math.abs(booking.endAt.getTime() - candidate.endAt.getTime());
+
+    const diffEndAt = diffMs / 60000;
+
+    if(diffEndAt > 15){
+      return false;
+    }
+    
+
     return (
       booking.startAt < candidate.endAt && booking.endAt > candidate.startAt
     );
